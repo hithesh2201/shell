@@ -1,4 +1,4 @@
 #!/bin/bash
 
-USER=hello
+USER=$1
 echo "$USER"
