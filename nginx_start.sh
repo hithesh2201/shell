@@ -28,7 +28,7 @@ proxy_http_version 1.1;
 location /images/ {
   expires 5s;
   root   /usr/share/nginx/html;
-  try_files $uri /images/placeholder.jpg;
+  try_files \$uri /images/placeholder.jpg;
 }
 
 location /api/catalogue/ { proxy_pass http://localhost:8080/; }
@@ -42,6 +42,7 @@ location /health {
   access_log off;
 }
 EOL
+
 
 # Restart Nginx to apply changes
 systemctl restart nginx
