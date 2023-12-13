@@ -17,6 +17,7 @@ else
 fi
 
 yum install mysql -y &>>temp.log
-yum install gitt -y &>>temp.log
 check "MYSQL"
+yum install gitt -y &>>temp.log
+
 check "GIT"
