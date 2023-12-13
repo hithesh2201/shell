@@ -17,8 +17,8 @@ else
     echo "You are a root user"
 fi
 
-yum install mysql -y
-CHECK "MYSQL Installing"
+yum install mysql -y &>>temp.log
+CHECK "MYSQL"
 
-yum install git -y
-CHECK "GIT Installing"
+yum install git -y &>>temp.log
+CHECK "GIT"
