@@ -18,6 +18,6 @@ fi
 
 yum install mysql -y &>>temp.log
 check "MYSQL"
-yum install gitt -y &>>temp.log
+yum install git -y &>>temp.log
 
 check "GIT"
