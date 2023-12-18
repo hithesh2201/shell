@@ -8,4 +8,9 @@ then
     exit 1
 fi
 
+LOGFILE=$(find . -type f -mtime +14)
 
+while IFS= read -r line
+do
+  echo "Line: $line"
+done <<< "$LOGFILE"
