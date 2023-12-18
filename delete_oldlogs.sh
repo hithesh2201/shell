@@ -14,6 +14,7 @@ then
 fi
 
 LOGFILE=$(find $DIR -type f -mtime +14)
+echo "$LOGFILE"
 
 while IFS= read -r line
 do
