@@ -4,7 +4,7 @@
 threshold=20
 
 # Set the email address where the notification will be sent
-email_address="hithesh2201"
+email_address="hithesh2201@gmail.com"
 
 # Get the current disk space usage percentage
 disk_space=$(df -h / | awk 'NR==2 {print $5}' | cut -d'%' -f1)
