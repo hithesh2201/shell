@@ -13,12 +13,11 @@ then
     exit 1
 fi
 
-LOGFILE=$(find $DIR -type f -mtime +14)
+LOGFILE=$(find $DIR -type f -mtime +14 -name "*.log")
 echo "$LOGFILE"
 
 while IFS= read -r line
 do
-  L=$(find $line -name "*.log")
-  rm -rf "$L"
+  rm -rf "$line"
   CHECK
 done <<< "$LOGFILE"
