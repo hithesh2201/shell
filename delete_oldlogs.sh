@@ -17,6 +17,7 @@ LOGFILE=$(find $DIR -type f -mtime +14)
 
 while IFS= read -r line
 do
-  rm -rf "$line"
+  L=$($LOGFILE -name "*.log")
+  rm -rf "$L"
   CHECK
 done <<< "$LOGFILE"
