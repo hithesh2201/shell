@@ -21,3 +21,4 @@ if [ "$disk_space" -gt "$threshold" ]; then
   # Optionally, you can log the event
   echo "$(date): Disk space alert - $disk_space% used. Email sent to $email_address." >> /tmp/disk_space_alert.log
 fi
+sh mail.sh "DevOps Team" "High Disk Usage" "$message" "hithesh2201@gmail.com" "ALERT High Disk Usage"
