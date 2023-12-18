@@ -4,7 +4,7 @@ DIR="/tmp/shell_script_logs"
 CHECK() {
     if [ $? -eq 0 ]
     then
-        echo "$line successfully deleted"
+        echo "$L successfully deleted"
     fi
 }
 if [ ! -d $DIR ]
