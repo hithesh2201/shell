@@ -19,5 +19,5 @@ if [ "$disk_space" -gt "$threshold" ]; then
   echo "$message" | mail -s "$subject" "$email_address"
 
   # Optionally, you can log the event
-  echo "$(date): Disk space alert - $disk_space% used. Email sent to $email_address." >> /tmp/log/disk_space_alert.log
+  echo "$(date): Disk space alert - $disk_space% used. Email sent to $email_address." >> /tmp/disk_space_alert.log
 fi
