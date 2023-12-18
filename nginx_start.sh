@@ -12,7 +12,7 @@ dnf install nginx -y
 # Enable and start Nginx
 systemctl enable nginx
 systemctl start nginx
-
+ 
 # Clear Nginx HTML directory
 rm -rf /usr/share/nginx/html/*
 

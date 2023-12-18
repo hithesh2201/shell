@@ -3,5 +3,5 @@
 U=$1
 V=$2
 
-SUM=$(($U+$V))
+SUM=$((U+V))
 echo "$SUM"
