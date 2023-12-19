@@ -13,16 +13,16 @@ while getopts ":a:b:" opt; do
       exit 1
       ;;
     :)
-      if [ -z "$arg_a" ] || [ -z "$arg_b" ]; then
-        echo "Error: Both -a and -b options are required."
-        exit 1
-        fi  
+      echo "Option -$OPTARG requires an argument." >&2
       exit 1
       ;;
   esac
 done
 
-
+if [ -z "$arg_a" ] || [ -z "$arg_b" ]; then
+  echo "Error: Both -a and -b options are required."
+  exit 1
+fi
 
 echo "Option a: $arg_a"
 echo "Option b: $arg_b"
