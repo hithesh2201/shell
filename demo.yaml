@@ -1,0 +1,80 @@
+---
+- name: Install and Configure Nginx
+  hosts: your_target_servers
+  become: true  # Run tasks with elevated privileges (sudo)
+
+  tasks:
+    - name: Check if the script is run as root
+      command: whoami
+      register: current_user
+
+    - name: Ensure script is run as root
+      fail:
+        msg: "ERROR: This script must be run as root."
+      when: current_user.stdout != "root"
+
+    - name: Install Nginx
+      dnf:
+        name: nginx
+        state: present
+      become: true
+
+    - name: Enable and start Nginx
+      systemd:
+        name: nginx
+        enabled: yes
+        state: started
+      become: true
+
+    - name: Clear Nginx HTML directory
+      file:
+        path: "/usr/share/nginx/html/"
+        state: absent
+      become: true
+
+    - name: Download and extract web content
+      get_url:
+        url: "https://roboshop-builds.s3.amazonaws.com/web.zip"
+        dest: "/tmp/web.zip"
+      become: true
+
+    - name: Extract web content
+      unarchive:
+        src: "/tmp/web.zip"
+        dest: "/usr/share/nginx/html/"
+      become: true
+
+    - name: Configure Nginx with custom settings
+      blockinfile:
+        path: "/etc/nginx/default.d/roboshop.conf"
+        create: yes
+        block: |
+          proxy_http_version 1.1;
+
+          location /images/ {
+            expires 5s;
+            root   /usr/share/nginx/html;
+            try_files $uri /images/placeholder.jpg;
+          }
+
+          location /api/catalogue/ { proxy_pass http://localhost:8080/; }
+          location /api/user/ { proxy_pass http://localhost:8080/; }
+          location /api/cart/ { proxy_pass http://localhost:8080/; }
+          location /api/shipping/ { proxy_pass http://localhost:8080/; }
+          location /api/payment/ { proxy_pass http://localhost:8080/; }
+
+          location /health {
+            stub_status on;
+            access_log off;
+          }
+
+    - name: Restart Nginx to apply changes
+      systemd:
+        name: nginx
+        state: restarted
+      become: true
+
+  post_tasks:
+    - name: Print completion message
+      debug:
+        msg: "Nginx configuration completed successfully."
