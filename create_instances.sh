@@ -20,8 +20,6 @@ do
                     --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$i}]" \
                     --query 'Instances[0].PrivateIpAddress' \
                     --output text)
-    aws ec2 run-instances --image-id $AMI --instance-type 
-    $INSTANCE_TYPE --security-group-ids $SG_ID --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$i}]"
     echo "$i : $PRIVATE_IPADDRESS" 
     aws route53 change-resource-record-sets \
     --hosted-zone-id "$HOSTED_ZONE_ID" \
