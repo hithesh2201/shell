@@ -1,6 +1,6 @@
 #!/bin/bash
 ID= $(id -u)
-if [ $ID -neq 0 ]
+if [ $ID != 0 ]
 then
     echo "needs sudo access"
 else
