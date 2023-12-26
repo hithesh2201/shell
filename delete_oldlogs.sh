@@ -13,7 +13,7 @@ then
     exit 1
 fi
 
-LOGFILE=$(find $DIR -type f -mtime +14 -name "*.log")
+LOGFILE=$(find $DIR -type f -mtime +14 -name "*.log") # find .(Dot represents it will check pwd )
 echo "$LOGFILE"
 
 while IFS= read -r line
