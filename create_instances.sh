@@ -1,5 +1,5 @@
 #!/bin/bash
-INSTANCES_NAME=("mongodb" "mysql" "redis" "catalogue" "user" "cart" "shipping" "payments" "rabbitmq" "dispatch" "web")
+INSTANCES_NAME=("mongod" "mysql" "redis" "catalogue" "user" "cart" "shipping" "payments" "rabbitmq" "dispatch" "web")
 # INSTANCES_NAME=("mongodb" "catalogue" "web")
 INSTANCE_TYPE=""
 DOMAIN_PATH="hiteshshop.online"
